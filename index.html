@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <title>Algorithme de tri</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <script src="JS/algo.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+</head>
+
+<body>
+    <h1 class="generTableau">Recherche dans un tableau trié</h1>
+    <div class="divTableau">
+        <label for="tailleN">Taille du tableau :</label>
+        <input name="tailleN" id="tailleN" type="text">
+        <button type="submit" onclick="generTab()">Générer le tableau</button>
+        <button type="submit" onclick="generTabSorted()">Générer le tableau trié</button>
+        <div id="zoneTab"></div>
+        <h2>Commentaire :</h2>
+        <p class="commentaire">
+            La recherche par dichotomie est d'une complexité de <b>O(log n)</b>.
+            Celle de la recherche naïve est <b>O(n)</b>, donc une recherche dichotomique est plus rapide qu'une recherche naïve. Pour se rendre compte de cette différence il faut avoir un tableau suffisamment conséquent, de même pour le nombre de recherche lancée.
+        </p>
+    </div>
+    <hr>
+
+    <h1 class="rechercheDansTab">Recherche d'une valeur dans un tableau :</h1>
+    <p>Pour un résultat optimal, vous devez avoir généré un <b>tableau trié</b></p>
+    <div class="divRechercheDansTab">
+        <label for="numberToSearch">Nombre à rechercher :</label>
+        <input name="numberToSearch" id="numberToSearch" type="text">
+        <button type="submit" onclick="chercheDansTab()">Chercher dans le tableau</button>
+        <div id="zoneTabSearch"></div>
+        <div id="zoneTpsRecherche"></div>
+        <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+    </div>
+    <hr>
+
+    <h1 class="AlgoSort">3 algorithmes de tris :</h1>
+    <div class="parentTris">
+        <div class="divBubbleSort">
+            <h2>Tri à bulle :</h2>
+            <button type="submit" onclick="bubbleSort()">Lancer un tri à bulle</button>
+            <div id="zoneTpsRechercheBubble"></div>
+        </div>
+        <div class="divFusionSort">
+            <h2>Tri par fusion :</h2>
+            <button type="submit" onclick="fusionSort()">Lancer un tri par fusion</button>
+            <div id="zoneTpsRechercheMerge"></div>
+        </div>
+        <div class="divInsertionSort">
+            <h2>Tri par insertion :</h2>
+            <button type="submit" onclick="insertionSort()">Lancer un tri par insertion</button>
+            <div id="zoneTpsRechercheInsertion"></div>
+        </div>
+    </div>
+    <div class="divAlgoSort">
+        <h1 class="algoSortX3">Exécution des 3 algorithmes et comparaison du temps :</h1>
+        <h2>Commentaire :</h2>
+        <p class="commentaire">
+            Entre nos 3 tris qui sont <b>le tri à bulles</b>, <b>le tri par fusion (merge)</b> et <b>le tri par insertion</b>, nous constatons avec le graphique que <b>le tri par fusion</b> est le plus rapide avec une complexité de <b>O(n log n)</b>. Ensuite en deuxième place on retrouve le tri par insertion avec une complexité O(n²) puis en dernier, le tri à bulles avec également une complexité O(n²). <br>
+            Si pour une même complexité, le tri par insertion reste plus rapide c'est parce qu'il effectue moins de comparaison que le tri à bulles et si le tableau est partiellement trié, ce tri peu se trouver encore plus rapide.
+        </p>
+        <button type="submit" onclick="algoSortX3()">Lancer les 3 tris</button><br>
+        <canvas id="myChart2" style="width:100%;max-width:700px"></canvas>
+    </div>
+</body>
+
+</html>

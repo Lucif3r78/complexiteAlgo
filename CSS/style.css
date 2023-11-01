@@ -1,0 +1,56 @@
+body {
+    width: 90%;
+    padding: 0;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: Arial, sans-serif;
+    color: #102542;
+    background-color: #F4FAFF;
+}
+
+#zoneTab{
+    width: 100%;
+    max-width: 1440px;
+    overflow-x: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+#zoneTab>table{
+    margin-top: 20px;
+}
+#zoneTab>table,td{
+    border: solid 1px black;
+    padding: 5px;
+}
+
+hr{
+    margin-top: 20px;
+    width: 90%;
+    color: #A31621;
+}
+
+.highlight {
+    background-color: yellow; /* You can adjust the highlighting style as needed */
+}
+
+#myChart, #myChart2{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.parentTris{
+    margin-left: auto;
+    margin-right: auto;
+    width: 1600px;
+    display: flex;
+}
+.divBubbleSort{
+    width: 100%;
+}
+.divFusionSort{
+    width: 100%;
+}
+.divInsertionSort{
+    width: 100%;
+}
