@@ -31,10 +31,10 @@ hr{
 }
 
 .highlight {
-    background-color: yellow; /* You can adjust the highlighting style as needed */
+    background-color: yellow;
 }
 
-#myChart, #myChart2{
+#myChart, #myChart2, #myChart3{
     margin-left: auto;
     margin-right: auto;
 }
