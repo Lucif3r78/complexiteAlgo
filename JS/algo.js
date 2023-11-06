@@ -203,10 +203,10 @@ const chercheDansTab = function(){
     });
 }
 
-const bubbleSort = function(){
+const bubbleSort = function(taille){
 
     // Génération du tableau
-    tailleN = 5000
+    tailleN = taille
     table = [];
     while (tailleN!=0){
         table.push(Math.floor(Math.random() * 1001));
@@ -262,9 +262,9 @@ function merge(left, right) {
     return result.concat(left.slice(leftIndex), right.slice(rightIndex));
 }
 
-const fusionSort = function() {
+const fusionSort = function(taille) {
     // Génération du tableau
-    let tailleN = 5000;
+    let tailleN = taille;
     let sortTab = [];
     while (tailleN != 0) {
         sortTab.push(Math.floor(Math.random() * 5001));
@@ -286,9 +286,9 @@ const fusionSort = function() {
 }
 
 // Tri par insertion
-const insertionSort = function() {
+const insertionSort = function(taille) {
     // Génération du tableau
-    let tailleN = 5000;
+    let tailleN = taille;
     let tab = [];
     while (tailleN != 0) {
         tab.push(Math.floor(Math.random() * 5001));
@@ -320,21 +320,21 @@ const algoSortX3 = function() {
     var fusionTab = [];
     var insertionTab = [];
     var tours = 100;
+    var taille = 5000;
 
     for (var i = 0 ; i < tours ; i++){
-        var executionTimeBubble = bubbleSort();
+        var executionTimeBubble = bubbleSort(taille);
         totalExecutionTimeBubble += executionTimeBubble;
         bubbleTab.push(executionTimeBubble);
 
-        var executionTimeFusion = fusionSort();
+        var executionTimeFusion = fusionSort(taille);
         totalExecutionTimeFusion += executionTimeFusion;
         fusionTab.push(executionTimeFusion);
 
-        var executionTimeInsertion = insertionSort();
+        var executionTimeInsertion = insertionSort(taille);
         totalExecutionTimeInsertion += executionTimeInsertion;
         insertionTab.push(executionTimeInsertion);
     };
-    // Calculate the average execution time for each method
     const avgExecutionTimeBubble = totalExecutionTimeBubble / bubbleTab.length;
     const avgExecutionTimeFusion = totalExecutionTimeFusion / fusionTab.length;
     const avgExecutionTimeInsertion = totalExecutionTimeInsertion / insertionTab.length;
@@ -353,11 +353,58 @@ const algoSortX3 = function() {
           }]
         },
         options: {
-          legend: {display: false},
-          title: {
-            display: true,
-            text: "Moyenne d'exécution pour 100 recherches"
-          }
+            legend: {display: false},
+            title: {
+                display: true,
+                text: "Moyenne d'exécution pour 100 recherches"
+            }
+        }
+    });
+}
+
+const algoSortX3Graph = function() {
+    var bubbleTab = [];
+    var fusionTab = [];
+    var insertionTab = [];
+    var tours = [5000, 10000, 50000, 100000];
+
+    for (var i = 0 ; i < tours.length ; i++){
+        var executionTimeBubble = bubbleSort(tours[i]);
+        bubbleTab.push(executionTimeBubble);
+
+        var executionTimeFusion = fusionSort(tours[i]);
+        fusionTab.push(executionTimeFusion);
+
+        var executionTimeInsertion = insertionSort(tours[i]);
+        insertionTab.push(executionTimeInsertion);
+    };
+
+    new Chart("myChart3", {
+        type: "line",
+        data: {
+            labels: tours,
+            datasets: [{
+                data: bubbleTab,
+                borderColor: "#A31621",
+                fill: false
+            },
+            {
+                data: fusionTab,
+                borderColor: "#D5B942",
+                fill: false
+            },
+            {
+                data: insertionTab,
+                borderColor: "#4E8098",
+                fill: false
+            }]
+        },
+        options: {
+            legend: {display: false},
+            title: {
+                display: true,
+                text: ['Bubble', 'Merge', 'Insertion']
+            }
         }
     });
 }
