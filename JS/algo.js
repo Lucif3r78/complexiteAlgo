@@ -403,7 +403,7 @@ const algoSortX3Graph = function() {
             legend: {display: false},
             title: {
                 display: true,
-                text: ['Bubble', 'Merge', 'Insertion']
+                text: ['Bubble - Red', 'Merge - Yellow', 'Insertion - Blue']
             }
         }
     });
