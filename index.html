@@ -32,7 +32,7 @@
         <button type="submit" onclick="chercheDansTab()">Chercher dans le tableau</button>
         <div id="zoneTabSearch"></div>
         <div id="zoneTpsRecherche"></div>
-        <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+        <canvas id="myChart" style="width:100vw;max-width:700px"></canvas>
     </div>
     <hr>
 
@@ -61,9 +61,12 @@
             Entre nos 3 tris qui sont <b>le tri à bulles</b>, <b>le tri par fusion (merge)</b> et <b>le tri par insertion</b>, nous constatons avec le graphique que <b>le tri par fusion</b> est le plus rapide avec une complexité de <b>O(n log n)</b>. Ensuite en deuxième place on retrouve le tri par insertion avec une complexité O(n²) puis en dernier, le tri à bulles avec également une complexité O(n²). <br>
             Si pour une même complexité, le tri par insertion reste plus rapide c'est parce qu'il effectue moins de comparaison que le tri à bulles et si le tableau est partiellement trié, ce tri peu se trouver encore plus rapide.
         </p>
-        <button type="submit" onclick="algoSortX3()">Lancer les 3 tris</button><br>
-        <canvas id="myChart2" style="width:100%;max-width:700px"></canvas>
+        <button type="submit" onclick="algoSortX3()">Obtenir un graphe en barre</button>
+        <button type="submit" onclick="algoSortX3Graph()">Obtenir un graphe en ligne</button><br>
+        <canvas id="myChart2" style="width:100vw;max-width:700px"></canvas>
+        <canvas id="myChart3" style="width:100vw;max-width:700px"></canvas>
     </div>
+
 </body>
 
 </html>
