@@ -32,6 +32,7 @@
         <button type="submit" onclick="chercheDansTab()">Chercher dans le tableau</button>
         <div id="zoneTabSearch"></div>
         <div id="zoneTpsRecherche"></div>
+        <div class="loader" id="loaderTab"></div>
         <canvas id="myChart" style="width:100vw;max-width:700px"></canvas>
     </div>
     <hr>
@@ -40,17 +41,17 @@
     <div class="parentTris">
         <div class="divBubbleSort">
             <h2>Tri à bulle :</h2>
-            <button type="submit" onclick="bubbleSort()">Lancer un tri à bulle</button>
+            <button type="submit" onclick="bubbleSort(5000)">Lancer un tri à bulle</button>
             <div id="zoneTpsRechercheBubble"></div>
         </div>
         <div class="divFusionSort">
             <h2>Tri par fusion :</h2>
-            <button type="submit" onclick="fusionSort()">Lancer un tri par fusion</button>
+            <button type="submit" onclick="fusionSort(5000)">Lancer un tri par fusion</button>
             <div id="zoneTpsRechercheMerge"></div>
         </div>
         <div class="divInsertionSort">
             <h2>Tri par insertion :</h2>
-            <button type="submit" onclick="insertionSort()">Lancer un tri par insertion</button>
+            <button type="submit" onclick="insertionSort(5000)">Lancer un tri par insertion</button>
             <div id="zoneTpsRechercheInsertion"></div>
         </div>
     </div>
@@ -63,6 +64,7 @@
         </p>
         <button type="submit" onclick="algoSortX3()">Obtenir un graphe en barre</button>
         <button type="submit" onclick="algoSortX3Graph()">Obtenir un graphe en ligne</button><br>
+        <div class="loader" id="loaderSort"></div>
         <canvas id="myChart2" style="width:100vw;max-width:700px"></canvas>
         <canvas id="myChart3" style="width:100vw;max-width:700px"></canvas>
     </div>

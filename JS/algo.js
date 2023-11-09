@@ -79,7 +79,7 @@ const generTabSorted = function() {
 }
 
 
-const chercheDansTab = function(){
+const chercheDansTab = async function(){
     let numberToSearch = parseInt(document.getElementById("numberToSearch").value);
     let table = document.querySelector('#zoneTab table');
     if (table === null || table === "") {
@@ -165,6 +165,10 @@ const chercheDansTab = function(){
     var tabDicho = [];
     var totalExecutionTimeNaive = 0;
     var totalExecutionTimeDicho = 0;
+
+    document.getElementById("loaderTab").style.display = "block";
+    const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+    await sleep(10);
     
     while (tours > 0) {
         executionTimeNaive = chercheNaive();
@@ -184,6 +188,8 @@ const chercheDansTab = function(){
     console.log(totalExecutionTimeDicho);
     const yValues = [averageExecutionTimeNaive, averageExecutionTimeDicho];
 
+    document.getElementById("myChart").style.display = "block";
+
     new Chart("myChart", {
         type: "bar",
         data: {
@@ -201,6 +207,7 @@ const chercheDansTab = function(){
           }
         }
     });
+    document.getElementById("loaderTab").style.display = "none";
 }
 
 const bubbleSort = function(taille){
@@ -312,7 +319,8 @@ const insertionSort = function(taille) {
     return executionTime;
 }
 
-const algoSortX3 = function() {
+const algoSortX3 = async function() {
+
     var totalExecutionTimeBubble = 0;
     var totalExecutionTimeFusion = 0;
     var totalExecutionTimeInsertion = 0;
@@ -321,6 +329,10 @@ const algoSortX3 = function() {
     var insertionTab = [];
     var tours = 100;
     var taille = 5000;
+
+    document.getElementById("loaderSort").style.display = "block";
+    const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+    await sleep(10);
 
     for (var i = 0 ; i < tours ; i++){
         var executionTimeBubble = bubbleSort(taille);
@@ -339,9 +351,11 @@ const algoSortX3 = function() {
     const avgExecutionTimeFusion = totalExecutionTimeFusion / fusionTab.length;
     const avgExecutionTimeInsertion = totalExecutionTimeInsertion / insertionTab.length;
 
-    const xValues = ["Bubble", "Merge", "Insertion"];
+    const xValues = ["Bulle", "Fusion", "Insertion"];
     var barColors = ["#A31621", "#D5B942", "#4E8098"];
     var yValues = [avgExecutionTimeBubble, avgExecutionTimeFusion, avgExecutionTimeInsertion];
+
+    document.getElementById("myChart2").style.display = "block";
 
     new Chart("myChart2", {
         type: "bar",
@@ -360,13 +374,18 @@ const algoSortX3 = function() {
             }
         }
     });
+    document.getElementById("loaderSort").style.display = "none";
 }
 
-const algoSortX3Graph = function() {
+const algoSortX3Graph = async function() {
     var bubbleTab = [];
     var fusionTab = [];
     var insertionTab = [];
     var tours = [5000, 10000, 50000, 100000];
+
+    document.getElementById("loaderSort").style.display = "block";
+    const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+    await sleep(10);
 
     for (var i = 0 ; i < tours.length ; i++){
         var executionTimeBubble = bubbleSort(tours[i]);
@@ -379,32 +398,40 @@ const algoSortX3Graph = function() {
         insertionTab.push(executionTimeInsertion);
     };
 
+    document.getElementById("myChart3").style.display = "block";
+
     new Chart("myChart3", {
         type: "line",
         data: {
             labels: tours,
             datasets: [{
+                label: 'bulle',
                 data: bubbleTab,
                 borderColor: "#A31621",
                 fill: false
             },
             {
+                label: 'fusion',
                 data: fusionTab,
                 borderColor: "#D5B942",
                 fill: false
             },
             {
+                label: 'insertion',
                 data: insertionTab,
                 borderColor: "#4E8098",
                 fill: false
             }]
         },
         options: {
-            legend: {display: false},
+            labels: ['Bulle', 'Fusion', 'Insertion'],
+            legend: {display: true,
+                legendText : ['Bulle', 'Fusion', 'Insertion']},
             title: {
                 display: true,
-                text: ['Bubble - Red', 'Merge - Yellow', 'Insertion - Blue']
+                text: "Comparaison du temps d'exécution (ms) en fonction de la taille du tableau"
             }
         }
     });
+    document.getElementById("loaderSort").style.display = "none";
 }
