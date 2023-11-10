@@ -1,7 +1,6 @@
 let tabGlobal;
 
 const generTab = function(){
-
     let tailleN = document.getElementById("tailleN").value;
 
     if (tailleN === null || tailleN === "" || tailleN === "0") {
@@ -55,7 +54,6 @@ const generTabSorted = function() {
         tailleN = tailleN - 1;
     }
     tab.sort((a, b) => a - b);
-
     tabGlobal = tab;
 
     var divZoneTab = document.getElementById("zoneTab");
@@ -74,8 +72,9 @@ const generTabSorted = function() {
         const cell = dataRow.insertCell(i);
         cell.textContent = tab[i];
     }
-
+    
     divZoneTab.appendChild(table);
+    console.log(tab);
 }
 
 
@@ -86,7 +85,6 @@ const chercheDansTab = async function(){
         alert("Vous devez générer un tableau.");
         return;
     }
-    // let rows = table.rows;
     let found = false;
 
     document.getElementById("zoneTabSearch").innerHTML = "";
@@ -101,13 +99,23 @@ const chercheDansTab = async function(){
         for (let i = 0; i < tabGlobal.length; i++) {
             if (tabGlobal[i] === numberToSearch) {
                 found = true;
+                break
             }
         }
 
         const endTimeNaive = performance.now();
 
         if (!found) {
-            document.getElementById("zoneTabSearch").innerHTML = "Number not found in the table.";
+            document.getElementById("zoneTabSearch").innerHTML = "Le nombre n'a pas été trouvé dans le tableau.";
+        } else {
+            const tableCells = table.getElementsByTagName("td");
+            for (let i = 0; i < tableCells.length; i++) {
+                if (parseInt(tableCells[i].textContent) === numberToSearch) {
+                    tableCells[i].classList.add("highlight");
+                } else {
+                    tableCells[i].classList.remove("highlight"); // Pour supprimer les anciennes mises en évidence
+                }
+            }
         }
 
         const executionTimeNaive = endTimeNaive - startTimeNaive;
@@ -125,7 +133,6 @@ const chercheDansTab = async function(){
 
         while (low <= high) {
             const mid = Math.floor((low + high) / 2);
-
             if (tabGlobal[mid] === cible) {
                 found = true;
                 break;
@@ -137,19 +144,6 @@ const chercheDansTab = async function(){
         }
 
         const endTime = performance.now();
-
-        if (!found) {
-            document.getElementById("zoneTabSearch").innerHTML = "Le nombre n'a pas été trouvé dans le tableau.";
-        } else {
-            const tableCells = table.getElementsByTagName("td");
-            for (let i = 0; i < tableCells.length; i++) {
-                if (parseInt(tableCells[i].textContent) === numberToSearch) {
-                    tableCells[i].classList.add("highlight");
-                } else {
-                    tableCells[i].classList.remove("highlight"); // Pour supprimer les anciennes mises en évidence
-                }
-            }
-        }
 
         const tempsExecution = endTime - startTime;
         return tempsExecution;
@@ -185,7 +179,6 @@ const chercheDansTab = async function(){
     // Calculate the average execution time for each method
     const averageExecutionTimeNaive = totalExecutionTimeNaive / tabNaif.length;
     const averageExecutionTimeDicho = totalExecutionTimeDicho / tabDicho.length;
-    console.log(totalExecutionTimeDicho);
     const yValues = [averageExecutionTimeNaive, averageExecutionTimeDicho];
 
     document.getElementById("myChart").style.display = "block";
@@ -279,8 +272,6 @@ const fusionSort = function(taille) {
     }
 
     const startTime = performance.now();
-
-    const sortedList = mergeSort(sortTab);
 
     const endTime = performance.now();
     const executionTime = endTime - startTime;
