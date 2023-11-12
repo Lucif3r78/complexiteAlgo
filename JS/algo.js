@@ -273,13 +273,12 @@ const fusionSort = function(taille) {
 
     const startTime = performance.now();
 
+    const sortedList = mergeSort(sortTab);
+
     const endTime = performance.now();
     const executionTime = endTime - startTime;
 
-    // console.log("Sorted List:", sortedList);
-    // console.log("Execution Time:", executionTime);
     document.getElementById("zoneTpsRechercheMerge").innerHTML = "<p>Le temps d'exécution est de </p>"+executionTime+" millisecondes.";
-
     return executionTime;
 }
 
